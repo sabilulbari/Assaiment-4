@@ -37,3 +37,20 @@ function btnToggle(id) {
     rejectSection.classList.add("hidden");
   }
 }
+
+
+const allCards = getId("all-cards");
+const allCount = getId("all-count");
+const interviewCount = getId("interview-count");
+const rejectedCount = getId("rejected-count");
+const rightJobCount = getId("right-job-count");
+
+// calculating of count
+function calculateOfCount() {
+  allCount.innerText = allCards.children.length;
+  rightJobCount.innerText = allCards.children.length;
+  interviewCount.innerText = interviewArray.length;
+  rejectedCount.innerText = rejectedArray.length;
+}
+
+calculateOfCount();
