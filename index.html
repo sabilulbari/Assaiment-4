@@ -30,7 +30,30 @@
     </style>
 </head>
 <body class="bg-gray-100">
-    
+    <!-- Header -->
+    <header class="max-w-[80%] mx-auto pt-[60px] space-y-[60px]">
+      <h1 class="font-bold text-[#002C5C] text-5xl">Job Application Tracker</h1>
+      <!-- Main Container -->
+      <div class="grid grid-cols-3 gap-4">
+        <!-- Cards -->
+        <div class="card p-5 rounded-lg bg-white text-[#323B49] text-2xl space-y-6 font-bold">
+          <p>Total</p>
+          <p id="all-count" class="text-3xl">0</p>
+        </div>
+        <!-- Interview -->
+        <div class="card p-5 rounded-lg bg-white text-[#323B49] text-2xl space-y-6 font-bold">
+          <p>Interview</p>
+          <p id="interview-count" class="text-3xl text-green-600/50">0</p>
+        </div>
+        <!-- Rejected -->
+        <div class="card p-5 rounded-lg bg-white text-[#323B49] text-2xl space-y-6 font-bold">
+          <p>Rejected</p>
+          <p id="rejected-count" class="text-3xl text-red-400">0</p>
+        </div>
+      </div>
+    </header>
+
+    <hr class="my-14 text-[#E6E7E9] max-w-[80%] mx-auto" />
     
 
 
