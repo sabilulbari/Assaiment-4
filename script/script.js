@@ -62,3 +62,56 @@ function calculateOfCount() {
 }
 
 calculateOfCount();
+
+
+
+// event listener for Event Delegation
+document.getElementById("main-section").addEventListener("click", function (event) {
+  const parentOfCard = event.target.parentNode.parentNode;
+  const jobName = parentOfCard.querySelector(".job-names").innerText;
+  const positionName = parentOfCard.querySelector(".position-name").innerText;
+  const salaryLocaition = parentOfCard.querySelector(".salary-locaition").innerText;
+  const status = parentOfCard.querySelector(".status").innerText;
+  const notes = parentOfCard.querySelector(".notes").innerText;
+
+  // for interview button
+  if (event.target.classList.contains("interview-btn")) {
+    const cardInfo = {
+      jobName,
+      positionName,
+      salaryLocaition,
+      status,
+      notes,
+    };
+
+
+
+    // status button style change to click
+    parentOfCard.querySelector(".status").innerText = "INTERVIEW";
+    parentOfCard.querySelector(".status").style.border = "thin solid #22C55EB3";
+    parentOfCard.querySelector(".status").style.backgroundColor = "#ffffff";
+    parentOfCard.querySelector(".status").style.color = "#22C55ECC";
+
+    calculateOfCount();
+  }
+  // for reject button
+  else if (event.target.classList.contains("reject-btn")) {
+    const cardInfo = {
+      jobName,
+      positionName,
+      salaryLocaition,
+      status,
+      notes,
+    };
+
+    // status button style change to click
+    parentOfCard.querySelector(".status").innerText = "REJECTED";
+    parentOfCard.querySelector(".status").style.border = "thin solid #EF4444B3";
+    parentOfCard.querySelector(".status").style.backgroundColor = "#ffffff";
+    parentOfCard.querySelector(".status").style.color = "#EF4444CC";
+
+
+    
+    calculateOfCount();
+  }
+});
