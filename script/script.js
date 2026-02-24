@@ -1,3 +1,12 @@
+let interviewArray = [];
+let rejectedArray = [];
+let currentStatus = "all";
+
+function getId(id) {
+  const idName = document.getElementById(id);
+  return idName;
+}
+
 const allButton = document.getElementById("all");
 const interviewButton = document.getElementById("interview");
 const rejectedButton = document.getElementById("rejected");
@@ -37,7 +46,6 @@ function btnToggle(id) {
     rejectSection.classList.add("hidden");
   }
 }
-
 
 const allCards = getId("all-cards");
 const allCount = getId("all-count");
