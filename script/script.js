@@ -29,6 +29,8 @@ function btnToggle(id) {
   clickButton.style.backgroundColor = "#3B82F6";
   clickButton.style.color = "white";
 
+  currentStatus = id;
+
   if (id == "interview") {
     allCards.classList.add("hidden");
     rejectSection.classList.add("hidden");
@@ -155,7 +157,7 @@ function renderInterview() {
             <p class="notes py-7">${inter.notes}</p>
 
 
-            <button class="interview-btn rounded-md cursor-pointer font-bold bg-white py-2 px-4 border-1 text-green-500/80 border-green-500/70 hover:bg-green-400/20 hover:text-green-700 mr-4">
+            <button class="interview-btn rounded-md cursor-pointer font-bold bg-white py-2 px-4 border-1 text-green-500/80 border-green-500/70 hover:bg-green-400/20 hover:text-green-700 mr-4 sm:mt-0 mt-4">
               INTERVIEW
             </button>
 
@@ -192,8 +194,8 @@ function renderReject() {
             <button class="status rounded-md font-bold bg-white py-2 px-4 border-1 text-red-500/80 border-red-500/70 mr-4">REJECTED</button>
             <p class="notes py-7">${reject.notes}</p>
 
-
-            <button class="interview-btn rounded-md cursor-pointer font-bold bg-white py-2 px-4 border-1 text-green-500/80 border-green-500/70 hover:bg-green-400/20 hover:text-green-700 mr-4">
+              
+            <button class="interview-btn rounded-md cursor-pointer font-bold bg-white py-2 px-4 border-1 text-green-500/80 border-green-500/70 hover:bg-green-400/20 hover:text-green-700 mr-4 sm:mt-0 mt-4">
               INTERVIEW
             </button>
 
