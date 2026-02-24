@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Job Tracker</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Tracker</title>
 
     <!-- Import Tailwind -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -26,10 +26,10 @@
       * {
         font-family: "Geist", sans-serif;
       }
-
     </style>
-</head>
-<body class="bg-gray-100">
+  </head>
+
+  <body class="bg-gray-100">
     <!-- Header -->
     <header class="max-w-[80%] mx-auto pt-[60px] space-y-[60px]">
       <h1 class="font-bold text-[#002C5C] text-5xl">Job Application Tracker</h1>
@@ -54,8 +54,8 @@
     </header>
 
     <hr class="my-14 text-[#E6E7E9] max-w-[80%] mx-auto" />
-    
-    <!-- toggle button -->
+
+    <!-- Toggle Button -->
     <section class="max-w-[80%] mx-auto space-y-4">
       <div class="flex justify-between">
         <h2 class="text-[#002C5C] text-xl font-bold">Available Jobs</h2>
@@ -71,7 +71,7 @@
       </div>
     </section>
 
-        <!-- Main Card Section -->
+    <!-- Main Card Section -->
     <section id="main-section" class="max-w-[80%] mx-auto">
       <!-- All Card -->
       <div id="all-cards" class="all-card pt-10 space-y-10">
@@ -287,11 +287,21 @@
           </div>
         </div>
 
+      </div>
+        <!-- Interview section -->
         
       </section>
+      <section id="interview-section" class="hidden">
+        
+      </section>
+      <!-- Rejected Section -->
+       <section id="reject-section" class="hidden">
     </section>
 
-        <!-- No Job Section -->
+   
+
+
+    <!-- No Job Section -->
     <section id="no-jobs" class="max-w-[80%] mx-auto bg-white rounded-xl mt-[40px] p-28 hidden">
       <div class="flex flex-col text-center justify-center items-center">
         <img src="./assets/jobs.png" alt="" />
@@ -300,7 +310,7 @@
       </div>
     </section>
 
-
-    <script src="script/script.js"></script>
-</body>
+    <script src="./script/machine.js"></script>
+    <script src="./script/script.js"></script>
+  </body>
 </html>
