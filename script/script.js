@@ -63,8 +63,6 @@ function calculateOfCount() {
 
 calculateOfCount();
 
-
-
 // event listener for Event Delegation
 document.getElementById("main-section").addEventListener("click", function (event) {
   const parentOfCard = event.target.parentNode.parentNode;
@@ -84,14 +82,27 @@ document.getElementById("main-section").addEventListener("click", function (even
       notes,
     };
 
-
-
     // status button style change to click
     parentOfCard.querySelector(".status").innerText = "INTERVIEW";
     parentOfCard.querySelector(".status").style.border = "thin solid #22C55EB3";
     parentOfCard.querySelector(".status").style.backgroundColor = "#ffffff";
     parentOfCard.querySelector(".status").style.color = "#22C55ECC";
 
+    // array push to click
+    const isExits = interviewArray.find((item) => item.jobName == cardInfo.jobName);
+
+    if (!isExits) {
+      interviewArray.push(cardInfo);
+    }
+    rejectedArray = rejectedArray.filter((items) => items.jobName != cardInfo.jobName);
+
+    if (currentStatus == "rejected") {
+      renderReject();
+    }
+
+    renderInterview();
+
+    // interview count function
     calculateOfCount();
   }
   // for reject button
@@ -110,8 +121,94 @@ document.getElementById("main-section").addEventListener("click", function (even
     parentOfCard.querySelector(".status").style.backgroundColor = "#ffffff";
     parentOfCard.querySelector(".status").style.color = "#EF4444CC";
 
+    const isExits = rejectedArray.find((item) => item.jobName == cardInfo.jobName);
 
-    
+    if (!isExits) {
+      rejectedArray.push(cardInfo);
+    }
+
+    interviewArray = interviewArray.filter((items) => items.jobName != cardInfo.jobName);
+    if (currentStatus == "interview") {
+      renderInterview();
+    }
+    renderReject();
     calculateOfCount();
   }
 });
+
+//filter with interview render
+function renderInterview() {
+  interviewSection.innerHTML = "";
+
+  for (let inter of interviewArray) {
+    let div = document.createElement("div");
+    div.className = 'all-cards" class="all-card pt-10 space-y-10';
+    div.innerHTML = `
+    <div class=" flex justify-between bg-white rounded-xl p-6">
+          <!-- left side -->
+          <div class="card-1">
+            <h2 class="job-names font-bold text-[24px]">${inter.jobName}</h2>
+            <p class="position-name font-semibold text-[#64748B]/80">${inter.positionName}</p>
+            <p class="salary-locaition text-[#64748B]/80 py-5">${inter.salaryLocaition}</p>
+
+            <button class="status rounded-md font-bold bg-white py-2 px-4 border-1 text-green-500/80 border-green-500/70 mr-4">INTERVIEW</button>
+            <p class="notes py-7">${inter.notes}</p>
+
+
+            <button class="interview-btn rounded-md cursor-pointer font-bold bg-white py-2 px-4 border-1 text-green-500/80 border-green-500/70 hover:bg-green-400/20 hover:text-green-700 mr-4">
+              INTERVIEW
+            </button>
+
+            <!-- Rejected Button -->
+            <button class="reject-btn rounded-md cursor-pointer font-bold bg-white py-2 px-4 border-1 text-red-500/80 border-red-500/70 hover:bg-red-400/20 hover:text-red-700 disabled">
+              REJECTED
+            </button>
+          </div>
+          <!-- right delete -->
+          <div>
+            <button class="border-2 border-gray-200 h-10 w-10 text-gray-500 rounded-full cursor-pointer hover:text-red-500 hover:border-red-500">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
+        </div>`;
+    interviewSection.appendChild(div);
+  }
+}
+//filter with reject render
+function renderReject() {
+  rejectedArray.innerHTML = "";
+
+  for (let reject of rejectedArray) {
+    let div = document.createElement("div");
+    div.className = 'all-cards" class="all-card pt-10 space-y-10';
+    div.innerHTML = `
+    <div class=" flex justify-between bg-white rounded-xl p-6">
+          <!-- left side -->
+          <div class="card-1">
+            <h2 class="job-names font-bold text-[24px]">${reject.jobName}</h2>
+            <p class="position-name font-semibold text-[#64748B]/80">${reject.positionName}</p>
+            <p class="salary-locaition text-[#64748B]/80 py-5">${reject.salaryLocaition}</p>
+
+            <button class="status rounded-md font-bold bg-white py-2 px-4 border-1 text-red-500/80 border-red-500/70 mr-4">REJECTED</button>
+            <p class="notes py-7">${reject.notes}</p>
+
+
+            <button class="interview-btn rounded-md cursor-pointer font-bold bg-white py-2 px-4 border-1 text-green-500/80 border-green-500/70 hover:bg-green-400/20 hover:text-green-700 mr-4">
+              INTERVIEW
+            </button>
+
+            <!-- Rejected Button -->
+            <button class="reject-btn rounded-md cursor-pointer font-bold bg-white py-2 px-4 border-1 text-red-500/80 border-red-500/70 hover:bg-red-400/20 hover:text-red-700">
+              REJECTED
+            </button>
+          </div>
+          <!-- right delete -->
+          <div>
+            <button class="border-2 border-gray-200 h-10 w-10 text-gray-500 rounded-full cursor-pointer hover:text-red-500 hover:border-red-500">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
+        </div>`;
+    rejectSection.appendChild(div);
+  }
+}
