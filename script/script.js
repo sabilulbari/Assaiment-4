@@ -16,6 +16,7 @@ const rejectSection = document.getElementById("reject-section");
 const rejectedBtn = document.getElementsByClassName("reject-btn");
 const leftJob = getId("left-job");
 const leftJobCount = getId("left-job-count");
+const deleteBtn = document.querySelectorAll(".delete-btn");
 
 function btnToggle(id) {
   allButton.style.backgroundColor = "white";
@@ -38,7 +39,7 @@ function btnToggle(id) {
     rejectSection.classList.add("hidden");
     // noJob.classList.remove("hidden");
     interviewSection.classList.remove("hidden");
-    leftJob.classList.remove("hidden")
+    leftJob.classList.remove("hidden");
     leftJobCount.innerText = interviewArray.length;
   } else if (id == "rejected") {
     allCards.classList.add("hidden");
@@ -47,7 +48,6 @@ function btnToggle(id) {
     rejectSection.classList.remove("hidden");
     leftJob.classList.remove("hidden");
     leftJobCount.innerText = rejectedArray.length;
-
   } else if (id == "all") {
     allCards.classList.remove("hidden");
     // noJob.classList.add("hidden");
@@ -65,7 +65,6 @@ const rightJobCount = getId("right-job-count");
 
 // interview and rejected tab length
 
-
 // calculating of count
 function calculateOfCount() {
   allCount.innerText = allCards.children.length;
@@ -79,6 +78,7 @@ calculateOfCount();
 // event listener for Event Delegation
 document.getElementById("main-section").addEventListener("click", function (event) {
   const parentOfCard = event.target.parentNode.parentNode;
+  const allCardSection = event.target.parentNode.parentNode.parentNode;
   const jobName = parentOfCard.querySelector(".job-names").innerText;
   const positionName = parentOfCard.querySelector(".position-name").innerText;
   const salaryLocaition = parentOfCard.querySelector(".salary-locaition").innerText;
@@ -95,8 +95,6 @@ document.getElementById("main-section").addEventListener("click", function (even
       notes,
     };
 
-    console.log("Btn clicking")
-
     // status button style change to click
     parentOfCard.querySelector(".status").innerText = "INTERVIEW";
     parentOfCard.querySelector(".status").style.border = "thin solid #22C55EB3";
@@ -108,10 +106,9 @@ document.getElementById("main-section").addEventListener("click", function (even
 
     if (!isExits) {
       interviewArray.push(cardInfo);
+      calculateOfCount();
     }
     rejectedArray = rejectedArray.filter((items) => items.jobName != cardInfo.jobName);
-    console.log(rejectedArray)
-    console.log(cardInfo.jobName)
     renderReject();
 
     renderInterview();
@@ -139,9 +136,24 @@ document.getElementById("main-section").addEventListener("click", function (even
 
     if (!isExits) {
       rejectedArray.push(cardInfo);
+      calculateOfCount();
     }
 
     interviewArray = interviewArray.filter((items) => items.jobName != cardInfo.jobName);
+    renderInterview();
+    renderReject();
+    calculateOfCount();
+  }
+
+
+  if (event.target.classList.contains("delete-btn")) {
+    const deletedJobName = parentOfCard.querySelector(".job-names").innerText;
+
+    interviewArray = interviewArray.filter((item) => item.jobName !== deletedJobName);
+    rejectedArray = rejectedArray.filter((item) => item.jobName !== deletedJobName);
+
+    allCardSection.removeChild(parentOfCard);
+
     renderInterview();
     renderReject();
     calculateOfCount();
