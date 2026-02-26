@@ -106,14 +106,11 @@ document.getElementById("main-section").addEventListener("click", function (even
 
     if (!isExits) {
       interviewArray.push(cardInfo);
-      calculateOfCount();
     }
     rejectedArray = rejectedArray.filter((items) => items.jobName != cardInfo.jobName);
-    renderReject();
-
+    
     renderInterview();
-
-    // interview count function
+    renderReject();
     calculateOfCount();
   }
   // for reject button
@@ -136,7 +133,6 @@ document.getElementById("main-section").addEventListener("click", function (even
 
     if (!isExits) {
       rejectedArray.push(cardInfo);
-      calculateOfCount();
     }
 
     interviewArray = interviewArray.filter((items) => items.jobName != cardInfo.jobName);
@@ -166,7 +162,7 @@ function renderInterview() {
 
   for (let inter of interviewArray) {
     let div = document.createElement("div");
-    div.className = 'all-cards" class="all-card pt-10 space-y-10';
+    div.className = 'all-card pt-10 space-y-10';
     div.innerHTML = `
     <div class=" flex justify-between bg-white rounded-xl p-6">
           <!-- left side -->
@@ -200,7 +196,7 @@ function renderReject() {
 
   for (let reject of rejectedArray) {
     let div = document.createElement("div");
-    div.className = 'all-cards" class="all-card pt-10 space-y-10';
+    div.className = 'all-card pt-10 space-y-10';
     div.innerHTML = `
     <div class=" flex justify-between bg-white rounded-xl p-6">
           <!-- left side -->
